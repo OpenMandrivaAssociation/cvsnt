@@ -1,6 +1,6 @@
 %define name cvsnt
 %define version 2.5.03.2382
-%define release %mkrel 1
+%define release %mkrel 2
 
 # This sucks, isn't it
 %define libname %mklibname %name %version
@@ -28,7 +28,7 @@ This is the function at the heart of all Source Code Management, Document
 Management and Configuration Management Systems.
 
 %package -n %libname
-Group: System/libraries
+Group: System/Library
 Summary: Libraries and plugin need by cvsnt
 Provides: lib%name = %version-%release
 
