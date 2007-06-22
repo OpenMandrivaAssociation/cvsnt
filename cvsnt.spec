@@ -1,6 +1,6 @@
 %define name cvsnt
 %define version 2.5.03.2382
-%define release %mkrel 2
+%define release %mkrel 3
 
 # This sucks, isn't it
 %define libname %mklibname %name %version
@@ -99,7 +99,7 @@ autoconf
     --enable-sspi \
     --enable-enum \
     --enable-rcs
-%make
+%make LDFLAGS="-fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
