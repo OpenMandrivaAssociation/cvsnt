@@ -15,7 +15,7 @@ License: GPL
 Group: Development/Other
 Url: http://www.cvsnt.com
 BuildRoot: %{_tmppath}/%{name}-buildroot
-BuildRequires: sqlite-devel
+BuildRequires: sqlite3-devel
 BuildRequires: mysql-devel
 BuildRequires: unixODBC-devel
 BuildRequires: postgresql-devel
