@@ -1,6 +1,6 @@
 %define name cvsnt
 %define version 2.5.03.2382
-%define release %mkrel 3
+%define release %mkrel 4
 
 # This sucks, isn't it
 %define libname %mklibname %name %version
