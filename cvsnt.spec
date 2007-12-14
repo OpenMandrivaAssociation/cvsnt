@@ -76,6 +76,9 @@ ODBC database backend for %name
 %patch0 -p0 -b .lresolv
 
 %build
+# (tv) fix build on x86_64:
+export CFLAGS="$CFLAGS -fPIC"
+export CXXFLAGS="$CXXFLAGS -fPIC"
 
 aclocal
 libtoolize --force
