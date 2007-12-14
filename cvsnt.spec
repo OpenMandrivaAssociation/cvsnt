@@ -28,7 +28,7 @@ This is the function at the heart of all Source Code Management, Document
 Management and Configuration Management Systems.
 
 %package -n %libname
-Group: System/Library
+Group: System/Libraries
 Summary: Libraries and plugin need by cvsnt
 Provides: lib%name = %version-%release
 
