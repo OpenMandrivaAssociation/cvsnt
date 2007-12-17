@@ -14,7 +14,6 @@ Patch0:  cvsnt-lresolv.patch
 License: GPL
 Group: Development/Other
 Url: http://www.cvsnt.com
-BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: sqlite3-devel
 BuildRequires: mysql-devel
 BuildRequires: unixODBC-devel
