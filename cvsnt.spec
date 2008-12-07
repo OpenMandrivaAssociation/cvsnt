@@ -9,7 +9,7 @@ Release: %{release}
 Source0: http://march-hare.com/archive/%{name}-%{version}.tar.gz
 Patch1: cvsnt-2.5.04.3236-fix-detect-pcre.patch
 Patch2: cvsnt-2.5.04.3236-gcc43.patch
-License: GPL
+License: GPLv1+
 Group: Development/Other
 Url: http://www.cvsnt.com
 BuildRoot: %{_tmppath}/%{name}-buildroot
