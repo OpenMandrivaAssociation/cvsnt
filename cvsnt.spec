@@ -1,16 +1,14 @@
 %define name cvsnt
-%define version 2.5.03.2382
-%define release %mkrel 7
-
-# This sucks, isn't it
-%define libname %mklibname %name %version
+%define version 2.5.04.3236
+%define release %mkrel 1
 
 Summary: A powerful CVS replacement
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}.tar.bz2
-Patch0:  cvsnt-lresolv.patch
+Source0: http://march-hare.com/archive/%{name}-%{version}.tar.gz
+Patch1: cvsnt-2.5.04.3236-fix-detect-pcre.patch
+Patch2: cvsnt-2.5.04.3236-gcc43.patch
 License: GPL
 Group: Development/Other
 Url: http://www.cvsnt.com
@@ -21,19 +19,15 @@ BuildRequires: unixODBC-devel
 BuildRequires: postgresql-devel
 BuildRequires: pam-devel
 BuildRequires: krb5-devel
+BuildRequires: pcre-devel
+BuildRequires: zlib-devel
+BuildRequires: libxml2-devel
+Obsoletes: %{_lib}cvsnt2.5.03.2382
 
 %description
 CVSNT is software used to keep a track of changes to files stored on a computer
 This is the function at the heart of all Source Code Management, Document
 Management and Configuration Management Systems.
-
-%package -n %libname
-Group: System/Libraries
-Summary: Libraries and plugin need by cvsnt
-Provides: lib%name = %version-%release
-
-%description -n %libname
-Libraries and plugin need by cvsnt.
 
 %package rcs
 Summary: RCS compatible commande from %name
@@ -73,19 +67,15 @@ ODBC database backend for %name
 
 %prep
 %setup -q
-%patch0 -p0 -b .lresolv
+%patch1 -p0 -b .pcre
+%patch2 -p0 -b .gcc43
 
 %build
 # (tv) fix build on x86_64:
 export CFLAGS="$CFLAGS -fPIC"
 export CXXFLAGS="$CXXFLAGS -fPIC"
-
-aclocal
-libtoolize --force
-automake -a
-autoconf
-
-%configure \
+autoreconf
+%configure2_5x \
     --enable-sqlite \
     --enable-mysql \
     --enable-odbc \
@@ -102,7 +92,7 @@ autoconf
     --enable-sspi \
     --enable-enum \
     --enable-rcs
-%make LDFLAGS="-fPIC"
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -113,6 +103,7 @@ rm -f %{buildroot}%{_bindir}/cvs
 
 # what can we do with .la without .h files ?
 find %{buildroot}%{_libdir} -name "*.la" -exec rm -f {} \;
+find %{buildroot}%{_libdir} -type l -exec rm -f {} \;
 
 mv %{buildroot}%{_mandir}/man1/cvs.1 %{buildroot}%{_mandir}/man1/cvsnt.1
 mv %{buildroot}%{_mandir}/man5/cvs.5 %{buildroot}%{_mandir}/man5/cvsnt.5
@@ -126,23 +117,21 @@ rm -rf $RPM_BUILD_ROOT
 %_sysconfdir/%name
 %_bindir/cvsnt
 %_bindir/cvslockd
-%_mandir/*/%{name}*
-
-%files rcs
-%defattr(-,root,root)
-%_bindir/co
-%_bindir/rcsdiff
-%_bindir/rlog
-
-%files -n %libname
-%defattr(-,root,root)
-%_libdir/*.so
+%_bindir/cvsscript
+%_mandir/*/*
+%_libdir/*-%{version}.so
 %dir %_libdir/%name
 %dir %_libdir/%name/database
 %_libdir/%name/protocols
 %_libdir/%name/triggers
 %_libdir/%name/xdiff
 %_libdir/%name/mdns
+
+%files rcs
+%defattr(-,root,root)
+%_bindir/co
+%_bindir/rcsdiff
+%_bindir/rlog
 
 %files database-mysql
 %defattr(-,root,root)
