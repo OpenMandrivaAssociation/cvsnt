@@ -1,0 +1,20 @@
+--- triggers/info_trigger.cpp~	2008-02-20 02:12:57.000000000 -0500
++++ triggers/info_trigger.cpp	2008-12-07 08:38:07.000000000 -0500
+@@ -40,6 +40,7 @@
+ #define MODULE info
+ 
+ #include <ctype.h>
++#include <climits>
+ #include <cvstools.h>
+ #include <map>
+ #include "../version.h"
+--- triggers/email_trigger.cpp~	2006-09-14 17:31:45.000000000 -0400
++++ triggers/email_trigger.cpp	2008-12-07 08:44:47.000000000 -0500
+@@ -46,6 +46,7 @@
+ #define MODULE email
+ 
+ #include <ctype.h>
++#include <climits>
+ #include <cvstools.h>
+ #include <map>
+ #include "../version.h"

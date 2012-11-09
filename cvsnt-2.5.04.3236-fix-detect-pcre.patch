@@ -1,0 +1,15 @@
+--- configure.in.pcre	2008-07-14 00:36:02.000000000 -0400
++++ configure.in	2008-12-07 08:35:00.000000000 -0500
+@@ -467,10 +467,8 @@
+   # Check for pcre posix library
+   saved_libs="$LIBS"
+   LIBS=""
+-  AC_SEARCH_LIBS(pcre_compile, pcreposix, [AC_MSG_CHECKING([for PCRE posix library])
+-       AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <pcreposix.h>]], [[int i;]])],[ac_cv_have_pcre="yes"],[])
+-       AC_MSG_RESULT($ac_cv_have_pcre)], ac_cv_have_pcre="no")
+-  PCRE_LIBS="$LIBS"
++  ac_cv_have_pcre=yes
++  PCRE_LIBS="`pcre-config --libs`"
+   LIBS="$saved_libs"
+ fi
+ AC_SUBST(PCRE_LIBS)
