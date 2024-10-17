@@ -11,7 +11,7 @@ Patch1: cvsnt-2.5.04.3236-fix-detect-pcre.patch
 Patch2: cvsnt-2.5.04.3236-gcc43.patch
 License: GPLv1+
 Group: Development/Other
-Url: http://www.cvsnt.com
+Url: https://www.cvsnt.com
 BuildRoot: %{_tmppath}/%{name}-buildroot
 BuildRequires: sqlite3-devel
 BuildRequires: mysql-devel
