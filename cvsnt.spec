@@ -13,6 +13,11 @@ License: GPLv1+
 Group: Development/Other
 Url: https://www.cvsnt.com
 BuildRoot: %{_tmppath}/%{name}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: sqlite3-devel
 BuildRequires: mysql-devel
 BuildRequires: unixODBC-devel
