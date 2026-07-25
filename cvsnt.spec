@@ -1,6 +1,6 @@
 %define name cvsnt
 %define version 2.5.04.3236
-%define release %mkrel 7
+%define release 8
 
 Summary: A powerful CVS replacement
 Name: %{name}
